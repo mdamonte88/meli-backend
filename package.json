@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test && node_modules/.bin/mocha spec --exit",
+    "test:cover": "nyc --reporter=text mocha",
+    "test:watch": "npm run test -- --watch"
   },
   "author": "Matias Damonte",
   "license": "ISC",
@@ -17,6 +19,7 @@
     "mongoose": "^5.10.5"
   },
   "devDependencies": {
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.4"
   }
 }
