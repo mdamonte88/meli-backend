@@ -1,8 +1,8 @@
 "use strict";
 
-const ItemModel = require("../models/item")
-var ControllerItem = () => {  };
+import ItemModel from "../models/item";
 
+var ControllerItem = () => {  };
 ControllerItem.getAll = async (req, res, next) =>
 {
     try {

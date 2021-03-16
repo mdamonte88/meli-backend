@@ -1,7 +1,7 @@
-const express = require("express"),
-      controller = require("../../controllers/item_controller"),
-      router = express.Router();
-
+import express from "express";
+import controller from "../../controllers/item_controller";
+    
+const router = express.Router();
 
 // @route  GET api/items
 // @desc   Get all items
@@ -15,6 +15,5 @@ router.get("/", controller.getAll );
 router.get("/item/:item_id", controller.get )
 
 router.use( controller.error404 );
-
 
 module.exports = router;
