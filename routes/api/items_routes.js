@@ -8,11 +8,15 @@ const router = express.Router();
 // @access Public
 router.get("/", controller.getAll );
 
-
 // @route  GET api/items/item/:id
 // @desc   GET a item
 // @access Public
 router.get("/item/:item_id", controller.get )
+
+// @route  POST api/items
+// @desc   Add a new item
+// @access Public
+router.post('/', controller.add );
 
 router.use( controller.error404 );
 
