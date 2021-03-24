@@ -14,10 +14,11 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
     "config": "^3.3.1",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^5.10.5"
+    "mongoose": "^5.10.5",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
