@@ -15,7 +15,13 @@ ControllerItem.getAll = async (req, res, next) =>
             if(!items) {
                 res.send({ items: [], message: "No items" });
             }
-            res.send({ items: items });
+            res.send({ 
+                autor: {
+                    name: 'Matias',
+                    lastname: 'Damonte'
+                },
+                items: items 
+            });
         });
 
 
@@ -30,7 +36,13 @@ ControllerItem.get = async (req, res, next) =>
     const itemId = req.params.item_id;
 
     ItemModel.findOne({ _id: itemId }).then((item) => {
-        res.send({ item: item });
+        res.send({
+            autor: {
+                name: 'Matias',
+                lastname: 'Damonte'
+            },
+            item: item 
+        });
     });
 }
 
