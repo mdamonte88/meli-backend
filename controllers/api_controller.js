@@ -18,11 +18,24 @@ ControllerAPI.getAll = async (req, res, next) =>
             results[i].free_shipping = results[i].shipping ? results[i].shipping.free_shipping : false;
         }
 
+        //Add Categories field
+        let categories = [];
+        const filters = data.available_filters && data.available_filters[0];
+        for (var i = 0; i < filters.values.length; i++) {
+            categories.push(
+                {
+                    id: filters.values[i].id,
+                    name: filters.values[i].name
+                }
+            );
+        }
+
         res.send({
             autor: {
                 name: 'Matias',
                 lastname: 'Damonte'
             },
+            categories: categories,
             items: results 
         });
       } catch (err) {
