@@ -19,16 +19,8 @@ ControllerAPI.getAll = async (req, res, next) =>
         }
 
         //Add Categories field
-        let categories = [];
-        const filters = data.available_filters && data.available_filters[0];
-        for (var i = 0; i < filters.values.length; i++) {
-            categories.push(
-                {
-                    id: filters.values[i].id,
-                    name: filters.values[i].name
-                }
-            );
-        }
+        const categoryFilter = data.filters && data.filters.filter((elem, i) => elem.id === 'category')[0];
+        const categories = categoryFilter.values && categoryFilter.values[0].path_from_root;
 
         res.send({
             autor: {
@@ -52,15 +44,20 @@ ControllerAPI.get = async (req, res, next) =>
         console.log('base_url:', base_url);
         const response = await fetch(base_url);
         const data = await response.json();
+        const categoryId = data.category_id;
         
         const responseDescription = await fetch(base_url+'/description');
         const dataDescription = await responseDescription.json();
         
         //Add picture and description fields
-        data.picture = data.thumbnail;
+        data.picture = data.pictures[0].url;
         data.description = dataDescription.plain_text;
 
-        // console.log('Results:', results);
+        const base_category_url = `https://api.mercadolibre.com/categories/${categoryId}`;
+        const responseCategory = await fetch(base_category_url);
+        const dataCategory = await responseCategory.json();
+        data.categories = dataCategory.path_from_root;
+
         res.send({
             autor: {
                 name: 'Matias',
