@@ -27,7 +27,7 @@ ControllerAPI.getAll = async (req, res, next) =>
         const categoryFilter = dataFilters && dataFilters.find((elem, i) => elem.id === 'category');
 
         if (categoryFilter && categoryFilter.values) {
-            //First element is the default value
+            //First category is the default value
             const firstElement = categoryFilter.values[0];
             categories = categoryFilter.values[0].path_from_root;
 
